@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Undangan Walimatul Khitan - Muhammad Zeyn Kenzi Hamizan</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -27,11 +27,16 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--navy-dark);
             background-color: var(--cream);
             overflow-x: hidden;
+            font-size: 16px;
         }
 
         body.no-scroll {
@@ -46,6 +51,16 @@
             font-family: 'Cormorant Garamond', serif;
         }
 
+        /* SoundCloud hidden */
+        #sc-player {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
         /* Cover */
         #cover {
             position: fixed;
@@ -53,45 +68,49 @@
             left: 0;
             width: 100%;
             height: 100vh;
+            height: 100dvh;
             z-index: 9999;
-            background: linear-gradient(rgba(15,29,53,0.5), rgba(15,29,53,0.7)),
+            background: linear-gradient(rgba(15,29,53,0.55), rgba(15,29,53,0.75)),
                         url('https://image.qwenlm.ai/public_source/848292e7-2347-480b-a76c-3db11be0b2cd/17578e1d3-4b1f-4f11-b4ae-4eb81bee3376.png') center/cover no-repeat;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: opacity 1s ease, visibility 1s ease;
+            padding: 1rem;
         }
 
         #cover.hidden {
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
         }
 
         .cover-content {
             text-align: center;
             color: white;
-            padding: 2rem;
+            padding: 1.5rem;
             animation: fadeInUp 1.5s ease;
-            max-width: 500px;
+            max-width: 480px;
+            width: 100%;
         }
 
         .cover-content .ornament {
-            font-size: 2.5rem;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
             color: var(--gold-light);
             margin-bottom: 0.5rem;
         }
 
         .cover-content .cover-subtitle {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
             letter-spacing: 3px;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
-            color: white;
+            color: var(--gold-light);
         }
 
         .cover-content h1 {
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 7vw, 2.8rem);
             font-weight: 700;
             margin-bottom: 0.3rem;
             text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
@@ -100,43 +119,46 @@
 
         .cover-content .cover-name {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            color: #f1dd7b;
-            margin: 1rem 0;
+            font-size: clamp(1.3rem, 5vw, 2rem);
+            color: var(--gold-light);
+            margin: 0.8rem 0;
             font-style: italic;
+            line-height: 1.3;
         }
 
         .cover-content .date-cover {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
             letter-spacing: 2px;
             margin: 1rem 0;
         }
 
         .cover-content .to-text {
-            font-size: 0.9rem;
-            margin-top: 1.5rem;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            margin-top: 1.2rem;
             opacity: 0.9;
         }
 
         .cover-content .guest-name {
             font-weight: 600;
-            font-size: 1.1rem;
-            margin: 0.5rem 0 1.5rem;
-            padding: 0.5rem 1.5rem;
+            font-size: clamp(0.95rem, 3vw, 1.1rem);
+            margin: 0.5rem 0 1.2rem;
+            padding: 0.5rem 1.2rem;
             border: 1px solid rgba(212,184,150,0.5);
             display: inline-block;
             border-radius: 4px;
             background: rgba(255,255,255,0.1);
+            max-width: 100%;
+            word-wrap: break-word;
         }
 
         .btn-open {
             background: var(--gold);
             color: white;
             border: none;
-            padding: 12px 40px;
+            padding: 12px 35px;
             border-radius: 50px;
-            font-size: 0.95rem;
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
             letter-spacing: 2px;
             text-transform: uppercase;
             transition: all 0.3s ease;
@@ -153,6 +175,7 @@
         /* Hero Section */
         #hero {
             min-height: 100vh;
+            min-height: 100dvh;
             background: linear-gradient(rgba(15,29,53,0.7), rgba(15,29,53,0.85)),
                         url('https://image.qwenlm.ai/public_source/848292e7-2347-480b-a76c-3db11be0b2cd/1da64c52d-c430-4d28-a362-7f9da965727d.png') center/cover no-repeat;
             display: flex;
@@ -161,15 +184,17 @@
             text-align: center;
             color: white;
             position: relative;
+            padding: 2rem 1rem;
         }
 
         .hero-content {
-            padding: 2rem;
+            padding: 1rem;
+            max-width: 600px;
         }
 
         .hero-content .subtitle {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
             letter-spacing: 4px;
             text-transform: uppercase;
             margin-bottom: 0.5rem;
@@ -178,16 +203,16 @@
 
         .hero-content .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 8vw, 3.5rem);
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.15;
             margin-bottom: 0.5rem;
             text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
         }
 
         .hero-content .hero-name {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
             color: var(--gold-light);
             font-style: italic;
             margin: 1rem 0;
@@ -195,16 +220,17 @@
 
         .hero-content .hero-date {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
             letter-spacing: 3px;
             margin-top: 1rem;
         }
 
         .hero-ornament {
-            width: 200px;
+            width: 180px;
+            max-width: 60%;
             height: 2px;
             background: var(--gold-light);
-            margin: 1.5rem auto;
+            margin: 1.2rem auto;
             position: relative;
         }
 
@@ -217,32 +243,34 @@
             color: var(--gold-light);
             background: transparent;
             padding: 0 10px;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         /* Sections */
         section {
-            padding: 80px 0;
+            padding: clamp(50px, 8vw, 80px) 0;
             position: relative;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+            padding: 0 1rem;
         }
 
         .section-title .ornament-text {
             font-family: 'Cormorant Garamond', serif;
             color: var(--gold);
-            font-size: 1.1rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
             letter-spacing: 3px;
             text-transform: uppercase;
         }
 
         .section-title h2 {
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
             color: var(--navy-dark);
             margin: 0.5rem 0;
+            line-height: 1.2;
         }
 
         .section-title .divider {
@@ -270,18 +298,19 @@
         #bismillah {
             background: var(--cream);
             text-align: center;
+            padding: clamp(40px, 6vw, 60px) 1rem;
         }
 
         .bismillah-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 5vw, 2rem);
             color: var(--gold);
             margin-bottom: 1.5rem;
         }
 
         .quote-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             font-style: italic;
             color: #555;
             max-width: 700px;
@@ -293,7 +322,7 @@
             color: var(--gold);
             font-weight: 600;
             margin-top: 1rem;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
         }
 
         /* Child Section */
@@ -303,12 +332,12 @@
 
         .child-card {
             text-align: center;
-            padding: 2rem;
+            padding: 1.5rem 1rem;
         }
 
         .child-img-wrapper {
-            width: 280px;
-            height: 350px;
+            width: min(280px, 75vw);
+            height: min(350px, 90vw);
             margin: 0 auto 2rem;
             border-radius: 15px;
             overflow: hidden;
@@ -325,7 +354,7 @@
 
         .child-name {
             font-family: 'Playfair Display', serif;
-            font-size: 2.2rem;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
             color: var(--navy-dark);
             margin-bottom: 0.5rem;
             line-height: 1.2;
@@ -338,20 +367,20 @@
         }
 
         .child-parent {
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
             color: #555;
             line-height: 1.8;
         }
 
         .child-parent strong {
             color: var(--navy-dark);
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 2.8vw, 1.05rem);
         }
 
         .parent-label {
             color: var(--gold);
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.3rem;
+            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
             font-weight: 600;
             margin-bottom: 0.5rem;
         }
@@ -364,7 +393,7 @@
         .event-card {
             background: white;
             border-radius: 20px;
-            padding: 3rem 2rem;
+            padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2rem);
             text-align: center;
             box-shadow: 0 20px 60px rgba(26,42,74,0.1);
             border: 2px solid var(--gold-light);
@@ -389,14 +418,14 @@
         }
 
         .event-icon {
-            font-size: 3rem;
+            font-size: clamp(2.5rem, 6vw, 3rem);
             color: var(--gold);
             margin-bottom: 1rem;
         }
 
         .event-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 5vw, 2rem);
             color: var(--navy-dark);
             margin-bottom: 1.5rem;
         }
@@ -406,7 +435,7 @@
         }
 
         .event-detail .label {
-            font-size: 0.85rem;
+            font-size: clamp(0.75rem, 2.2vw, 0.85rem);
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -415,13 +444,13 @@
         }
 
         .event-detail .value {
-            font-size: 1.1rem;
+            font-size: clamp(1rem, 2.8vw, 1.1rem);
             color: var(--navy-dark);
             font-weight: 500;
         }
 
         .event-detail .value-address {
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
             color: var(--navy-dark);
             font-weight: 500;
             line-height: 1.6;
@@ -431,9 +460,9 @@
             background: var(--navy);
             color: white;
             border: none;
-            padding: 10px 30px;
+            padding: 10px 25px;
             border-radius: 50px;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2.3vw, 0.9rem);
             letter-spacing: 1px;
             margin-top: 1.5rem;
             transition: all 0.3s;
@@ -469,9 +498,10 @@
         .countdown-wrapper {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: clamp(10px, 2vw, 20px);
             flex-wrap: wrap;
             margin-top: 2rem;
+            padding: 0 1rem;
         }
 
         .countdown-box {
@@ -479,8 +509,10 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(184,149,106,0.4);
             border-radius: 15px;
-            padding: 2rem 1.5rem;
-            min-width: 120px;
+            padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.5rem);
+            min-width: clamp(70px, 18vw, 120px);
+            flex: 1;
+            max-width: 140px;
             transition: transform 0.3s;
         }
 
@@ -490,14 +522,14 @@
 
         .countdown-box .number {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5rem;
+            font-size: clamp(2rem, 7vw, 3.5rem);
             font-weight: 700;
             color: var(--gold-light);
             line-height: 1;
         }
 
         .countdown-box .label {
-            font-size: 0.85rem;
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
             letter-spacing: 2px;
             text-transform: uppercase;
             margin-top: 0.5rem;
@@ -511,7 +543,7 @@
 
         .rsvp-form {
             background: white;
-            padding: 3rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(26,42,74,0.1);
             max-width: 600px;
@@ -523,8 +555,9 @@
             border: 1px solid #e0d8cc;
             padding: 12px 15px;
             border-radius: 10px;
-            font-size: 0.95rem;
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
             transition: all 0.3s;
+            width: 100%;
         }
 
         .form-control:focus, .form-select:focus {
@@ -533,7 +566,7 @@
         }
 
         .form-label {
-            font-size: 0.9rem;
+            font-size: clamp(0.85rem, 2.3vw, 0.9rem);
             color: #555;
             margin-bottom: 0.5rem;
         }
@@ -542,9 +575,9 @@
             background: var(--navy);
             color: white;
             border: none;
-            padding: 14px 40px;
+            padding: 14px 30px;
             border-radius: 50px;
-            font-size: 1rem;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
             letter-spacing: 2px;
             text-transform: uppercase;
             width: 100%;
@@ -558,13 +591,34 @@
         }
 
         /* Wishes */
+        .wishes-wrapper {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .wishes-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .wishes-wrapper::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .wishes-wrapper::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
         .wish-card {
             background: white;
-            padding: 1.5rem;
+            padding: 1.2rem;
             border-radius: 15px;
             margin-bottom: 1rem;
             box-shadow: 0 5px 20px rgba(26,42,74,0.08);
             border-left: 4px solid var(--gold);
+            animation: fadeInUp 0.5s ease;
         }
 
         .wish-header {
@@ -572,12 +626,14 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
         }
 
         .wish-name {
             font-weight: 600;
             color: var(--navy-dark);
-            font-size: 1.05rem;
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
         }
 
         .wish-status {
@@ -585,6 +641,7 @@
             padding: 3px 10px;
             border-radius: 20px;
             font-weight: 500;
+            white-space: nowrap;
         }
 
         .status-hadir {
@@ -604,8 +661,22 @@
 
         .wish-message {
             color: #555;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.3vw, 0.95rem);
             line-height: 1.6;
+            word-wrap: break-word;
+        }
+
+        .wish-time {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.5rem;
+        }
+
+        .empty-wishes {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+            font-style: italic;
         }
 
         /* Gift Section */
@@ -618,20 +689,22 @@
             background: var(--navy-dark);
             color: white;
             text-align: center;
-            padding: 3rem 0;
+            padding: clamp(2rem, 5vw, 3rem) 1rem;
         }
 
         footer .footer-names {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 5vw, 2rem);
             color: var(--gold-light);
             margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
         footer p {
-            opacity: 0.7;
-            font-size: 0.9rem;
+            opacity: 0.8;
+            font-size: clamp(0.8rem, 2.3vw, 0.9rem);
             margin-bottom: 0.3rem;
+            line-height: 1.6;
         }
 
         footer .yang-mengundang {
@@ -644,25 +717,26 @@
             color: var(--gold-light);
             font-family: 'Playfair Display', serif;
             margin-bottom: 0.8rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
         }
 
         footer .yang-mengundang p {
             opacity: 0.9;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.3vw, 0.95rem);
         }
 
         /* Music Button */
         .music-btn {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 55px;
-            height: 55px;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             background: var(--navy);
             color: var(--gold-light);
             border: 2px solid var(--gold);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             z-index: 1000;
             cursor: pointer;
             box-shadow: 0 5px 20px rgba(26,42,74,0.5);
@@ -701,15 +775,15 @@
         /* Scroll to top */
         .scroll-top {
             position: fixed;
-            bottom: 30px;
-            left: 30px;
-            width: 45px;
-            height: 45px;
+            bottom: 20px;
+            left: 20px;
+            width: 42px;
+            height: 42px;
             border-radius: 50%;
             background: var(--navy);
             color: var(--gold-light);
             border: 2px solid var(--gold);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             z-index: 1000;
             cursor: pointer;
             display: none;
@@ -723,92 +797,172 @@
             color: white;
         }
 
-        /* Islamic ornament decoration */
         .islamic-divider {
             text-align: center;
-            margin: 2rem 0;
+            margin: 1.5rem 0;
             color: var(--gold);
             font-size: 1.5rem;
         }
 
+        /* Toast notification */
+        .toast-custom {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--navy);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 10000;
+            transform: translateX(120%);
+            transition: transform 0.4s ease;
+            max-width: 90%;
+            font-size: 0.9rem;
+        }
+
+        .toast-custom.show {
+            transform: translateX(0);
+        }
+
+        .toast-custom.success {
+            background: #28a745;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
-            .cover-content h1 {
-                font-size: 2rem;
-            }
-
-            .cover-content .cover-name {
-                font-size: 1.5rem;
-            }
-
-            .hero-content .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-content .hero-name {
-                font-size: 1.8rem;
-            }
-
-            .section-title h2 {
-                font-size: 2rem;
-            }
-
-            .child-img-wrapper {
-                width: 220px;
-                height: 280px;
-            }
-
-            .child-name {
-                font-size: 1.8rem;
-            }
-
             .countdown-box {
-                min-width: 80px;
-                padding: 1.5rem 1rem;
+                min-width: 70px;
+                max-width: 100px;
             }
 
-            .countdown-box .number {
-                font-size: 2.5rem;
+            .event-card {
+                margin-bottom: 0;
+            }
+
+            .wishes-wrapper {
+                max-height: 400px;
             }
 
             .rsvp-form {
-                padding: 2rem 1.5rem;
-            }
-
-            section {
-                padding: 60px 0;
+                margin: 0 0.5rem;
             }
         }
 
         @media (max-width: 480px) {
-            .cover-content h1 {
-                font-size: 1.7rem;
+            .countdown-box {
+                min-width: 65px;
+                padding: 1rem 0.6rem;
             }
 
-            .hero-content .hero-title {
-                font-size: 2rem;
+            .countdown-box .number {
+                font-size: 1.8rem;
             }
 
-            .hero-content .hero-name {
+            .countdown-box .label {
+                font-size: 0.65rem;
+                letter-spacing: 1px;
+            }
+
+            .child-img-wrapper {
+                width: 75vw;
+                height: 90vw;
+            }
+
+            .hero-ornament {
+                width: 140px;
+            }
+
+            .cover-content {
+                padding: 1rem 0.5rem;
+            }
+
+            .section-title h2 {
+                font-size: 1.6rem;
+            }
+
+            .event-card {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .cover-content {
+                padding: 1rem 0.5rem;
+            }
+
+            .countdown-box {
+                min-width: 60px;
+                padding: 0.8rem 0.5rem;
+            }
+
+            .countdown-box .number {
                 font-size: 1.5rem;
             }
 
             .countdown-wrapper {
-                gap: 10px;
+                gap: 8px;
+            }
+        }
+
+        /* Landscape phone */
+        @media (max-height: 500px) and (orientation: landscape) {
+            #cover {
+                padding: 0.5rem;
             }
 
+            .cover-content .ornament {
+                font-size: 1.5rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .cover-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .cover-content .cover-name {
+                font-size: 1.1rem;
+                margin: 0.3rem 0;
+            }
+
+            .cover-content .date-cover {
+                font-size: 0.9rem;
+                margin: 0.5rem 0;
+            }
+
+            .cover-content .to-text {
+                margin-top: 0.5rem;
+            }
+
+            .cover-content .guest-name {
+                margin: 0.3rem 0 0.8rem;
+                padding: 0.3rem 1rem;
+            }
+
+            .btn-open {
+                padding: 8px 25px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
             .countdown-box {
-                min-width: 70px;
-                padding: 1rem 0.8rem;
-            }
-
-            .countdown-box .number {
-                font-size: 2rem;
+                min-width: 100px;
             }
         }
     </style>
 </head>
 <body class="no-scroll">
+
+    <!-- Toast Notification -->
+    <div class="toast-custom" id="toast"></div>
+
+    <!-- SoundCloud Hidden Player -->
+    <iframe id="sc-player" 
+            src="https://w.soundcloud.com/player/?url=https%3A//on.soundcloud.com/DLzQduh3Ansk3BM79w&color=%23b8956a&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false" 
+            allow="autoplay">
+    </iframe>
 
     <!-- Cover -->
     <div id="cover">
@@ -871,6 +1025,7 @@
                         <div class="child-img-wrapper">
                             <img src="https://i.imgur.com/NarTP9T.jpeg" alt="Muhammad Zeyn Kenzi Hamizan">
                         </div>
+                        <h3 class="child-name">Muhammad Zeyn<br>Kenzi Hamizan</h3>
                         <div class="islamic-divider"></div>
                         <div class="parent-label">Putra dari</div>
                         <p class="child-parent">
@@ -888,8 +1043,8 @@
     <section id="acara">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
-                <div class="ornament-text"></div>
-                <h2>EVENT</h2>
+                <div class="ornament-text">Acara</div>
+                <h2>Walimatul Khitan</h2>
                 <div class="divider">
                     <div class="line"></div>
                     <div class="dot"></div>
@@ -969,7 +1124,7 @@
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <div class="ornament-text">Konfirmasi Kehadiran</div>
-                <h2>RSVP & Ucapan</h2>
+                <h2>Buku Tamu & Ucapan</h2>
                 <div class="divider">
                     <div class="line"></div>
                     <div class="dot"></div>
@@ -980,7 +1135,7 @@
             <div class="row g-4">
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="rsvp-form">
-                        <h4 class="text-center mb-4 font-playfair">Kirim Ucapan</h4>
+                        <h4 class="text-center mb-4 font-playfair" style="font-size: clamp(1.3rem, 4vw, 1.6rem);">Kirim Ucapan</h4>
                         <form id="wishForm">
                             <div class="mb-3">
                                 <label class="form-label">Nama Lengkap</label>
@@ -1007,29 +1162,9 @@
                 </div>
 
                 <div class="col-lg-6" data-aos="fade-left">
-                    <h4 class="text-center mb-4 font-playfair">Ucapan Tamu</h4>
-                    <div id="wishesContainer" style="max-height: 500px; overflow-y: auto; padding-right: 10px;">
-                        <div class="wish-card">
-                            <div class="wish-header">
-                                <span class="wish-name">Budi Santoso</span>
-                                <span class="wish-status status-hadir">Hadir</span>
-                            </div>
-                            <p class="wish-message">Semoga Muhammad Zeyn menjadi anak yang sholeh, cerdas, dan berbakti kepada orang tua. Aamiin. 🤲</p>
-                        </div>
-                        <div class="wish-card">
-                            <div class="wish-header">
-                                <span class="wish-name">Anisa Rahma</span>
-                                <span class="wish-status status-hadir">Hadir</span>
-                            </div>
-                            <p class="wish-message">Barakallah fiik untuk Muhammad Zeyn. Semoga selalu dalam lindungan Allah SWT. </p>
-                        </div>
-                        <div class="wish-card">
-                            <div class="wish-header">
-                                <span class="wish-name">Rizky Firmansyah</span>
-                                <span class="wish-status status-ragu">Masih Ragu</span>
-                            </div>
-                            <p class="wish-message">Selamat ya untuk khitanan Muhammad Zeyn! Semoga menjadi anak yang sholeh dan sholehah. </p>
-                        </div>
+                    <h4 class="text-center mb-4 font-playfair" style="font-size: clamp(1.3rem, 4vw, 1.6rem);">Ucapan Tamu</h4>
+                    <div class="wishes-wrapper" id="wishesContainer">
+                        <!-- Wishes loaded from localStorage -->
                     </div>
                 </div>
             </div>
@@ -1053,9 +1188,9 @@
                 <div class="col-md-8 col-lg-5" data-aos="fade-up">
                     <div class="event-card">
                         <div class="event-icon"><i class="bi bi-bank"></i></div>
-                        <h5 class="font-playfair mb-3" style="font-size: 1.3rem;">Bank Central Asia</h5>
-                        <p class="mb-1" style="font-size: 0.9rem; color: #777;">a.n. Miftakhul Janah</p>
-                        <p class="mb-3" style="font-size: 1.3rem; font-weight: 700; color: var(--navy-dark); letter-spacing: 2px;">617 504 0548</p>
+                        <h5 class="font-playfair mb-3" style="font-size: clamp(1.1rem, 3vw, 1.3rem);">Bank Central Asia</h5>
+                        <p class="mb-1" style="font-size: clamp(0.85rem, 2.3vw, 0.9rem); color: #777;">a.n. Miftakhul Janah</p>
+                        <p class="mb-3" style="font-size: clamp(1.1rem, 3.5vw, 1.3rem); font-weight: 700; color: var(--navy-dark); letter-spacing: 2px;">617 504 0548</p>
                         <button class="btn btn-map" onclick="copyToClipboard('6175040548')">
                             <i class="bi bi-clipboard me-2"></i>Salin No. Rekening
                         </button>
@@ -1068,9 +1203,9 @@
     <!-- Footer -->
     <footer>
         <div class="container" data-aos="fade-up">
-            <div class="footer-names">Walimatul Khitan<br>Muhammad Zeyn Kenzi Hamizan</div>
-            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila<br>Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu<br>kepada putra kami.</p>
-            <p style="margin-top: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light);">
+            <div class="footer-names">Muhammad Zeyn Kenzi Hamizan</div>
+            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila<br class="d-none d-md-inline">Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu<br class="d-none d-md-inline">kepada putra kami.</p>
+            <p style="margin-top: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 3vw, 1.2rem); color: var(--gold-light);">
                 Wassalamu'alaikum Wr. Wb.
             </p>
             <div class="yang-mengundang">
@@ -1078,9 +1213,9 @@
                 <p>1. Kel. Besar M. Khobir, S.Sos</p>
                 <p>2. Kel. Besar Sefran Jamil</p>
             </div>
-            <p style="margin-top: 2rem; font-size: 0.8rem;">
+            <p style="margin-top: 2rem; font-size: clamp(0.75rem, 2vw, 0.8rem);">
                 © 2026 Walimatul Khitan Muhammad Zeyn Kenzi Hamizan<br>
-                
+                Made with <i class="bi bi-heart-fill" style="color: var(--gold-light);"></i> by InviGlory
             </p>
         </div>
     </footer>
@@ -1112,19 +1247,216 @@
             document.getElementById('guestName').textContent = decodeURIComponent(guest);
         }
 
-        // Open Invitation
+        // ==================== SOUNDCLOUD PLAYER ====================
+        let scWidget = null;
+        let isMusicPlaying = false;
+
+        function initSoundCloud() {
+            const iframe = document.getElementById('sc-player');
+            try {
+                scWidget = SC.Widget(iframe);
+                scWidget.bind(SC.Widget.Events.READY, function() {
+                    console.log('SoundCloud player ready');
+                });
+                scWidget.bind(SC.Widget.Events.FINISH, function() {
+                    scWidget.seekTo(0);
+                    scWidget.play();
+                });
+            } catch (e) {
+                console.log('SC Widget not ready, will retry');
+            }
+        }
+
+        // Load SoundCloud API
+        const scScript = document.createElement('script');
+        scScript.src = 'https://w.soundcloud.com/player/api.js';
+        scScript.onload = initSoundCloud;
+        document.head.appendChild(scScript);
+
+        function toggleMusic() {
+            const btn = document.getElementById('musicBtn');
+            const icon = document.getElementById('musicIcon');
+            
+            if (!scWidget) {
+                initSoundCloud();
+            }
+
+            if (!isMusicPlaying) {
+                if (scWidget) {
+                    scWidget.play();
+                }
+                btn.classList.add('playing');
+                icon.className = 'bi bi-pause-fill';
+                isMusicPlaying = true;
+            } else {
+                if (scWidget) {
+                    scWidget.pause();
+                }
+                btn.classList.remove('playing');
+                icon.className = 'bi bi-music-note-beamed';
+                isMusicPlaying = false;
+            }
+        }
+
+        // ==================== LOCALSTORAGE WISHES ====================
+        const STORAGE_KEY = 'khitanan_wishes_2026';
+
+        // Default wishes
+        const defaultWishes = [
+            {
+                name: 'Budi Santoso',
+                status: 'Hadir',
+                message: 'Semoga Muhammad Zeyn menjadi anak yang sholeh, cerdas, dan berbakti kepada orang tua. Aamiin. 🤲',
+                timestamp: new Date('2026-01-15T10:30:00').getTime()
+            },
+            {
+                name: 'Anisa Rahma',
+                status: 'Hadir',
+                message: 'Barakallah fiik untuk Muhammad Zeyn. Semoga selalu dalam lindungan Allah SWT. 💕',
+                timestamp: new Date('2026-01-16T14:20:00').getTime()
+            },
+            {
+                name: 'Rizky Firmansyah',
+                status: 'Masih Ragu',
+                message: 'Selamat ya untuk khitanan Muhammad Zeyn! Semoga menjadi anak yang sholeh dan sholehah. ',
+                timestamp: new Date('2026-01-17T09:15:00').getTime()
+            }
+        ];
+
+        function getWishes() {
+            try {
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    return JSON.parse(stored);
+                }
+            } catch (e) {
+                console.log('Error reading localStorage:', e);
+            }
+            // If no stored data, use defaults and save
+            saveWishes(defaultWishes);
+            return defaultWishes;
+        }
+
+        function saveWishes(wishes) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
+            } catch (e) {
+                console.log('Error saving to localStorage:', e);
+            }
+        }
+
+        function addWish(name, status, message) {
+            const wishes = getWishes();
+            const newWish = {
+                name: name,
+                status: status,
+                message: message,
+                timestamp: Date.now()
+            };
+            wishes.unshift(newWish); // Add to beginning
+            saveWishes(wishes);
+            return newWish;
+        }
+
+        function getStatusClass(status) {
+            if (status === 'Tidak Hadir') return 'status-tidak';
+            if (status === 'Masih Ragu') return 'status-ragu';
+            return 'status-hadir';
+        }
+
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            const options = { 
+                day: '2-digit', 
+                month: 'short', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return date.toLocaleDateString('id-ID', options);
+        }
+
+        function renderWishes() {
+            const container = document.getElementById('wishesContainer');
+            const wishes = getWishes();
+
+            if (wishes.length === 0) {
+                container.innerHTML = '<div class="empty-wishes">Belum ada ucapan. Jadilah yang pertama!</div>';
+                return;
+            }
+
+            container.innerHTML = wishes.map(w => `
+                <div class="wish-card">
+                    <div class="wish-header">
+                        <span class="wish-name">${escapeHtml(w.name)}</span>
+                        <span class="wish-status ${getStatusClass(w.status)}">${w.status}</span>
+                    </div>
+                    <p class="wish-message">${escapeHtml(w.message)}</p>
+                    <div class="wish-time"><i class="bi bi-clock me-1"></i>${formatDate(w.timestamp)}</div>
+                </div>
+            `).join('');
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ==================== FORM SUBMIT ====================
+        document.getElementById('wishForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('wishName').value.trim();
+            const status = document.getElementById('wishStatus').value;
+            const message = document.getElementById('wishMessage').value.trim();
+
+            if (!name || !status || !message) {
+                showToast('Mohon lengkapi semua field!', false);
+                return;
+            }
+
+            addWish(name, status, message);
+            renderWishes();
+            document.getElementById('wishForm').reset();
+            showToast('Terima kasih! Ucapan Anda telah tersimpan.', true);
+
+            // Scroll to wishes
+            setTimeout(() => {
+                document.getElementById('wishesContainer').scrollTop = 0;
+            }, 300);
+        });
+
+        // ==================== TOAST ====================
+        function showToast(message, success) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast-custom ' + (success ? 'success' : '') + ' show';
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ==================== OPEN INVITATION ====================
         function openInvitation() {
             const cover = document.getElementById('cover');
             cover.classList.add('hidden');
             document.body.classList.remove('no-scroll');
             document.getElementById('musicBtn').style.display = 'flex';
             
+            // Try to play music automatically (may be blocked by browser)
+            setTimeout(() => {
+                if (!isMusicPlaying) {
+                    toggleMusic();
+                }
+            }, 500);
+
             setTimeout(() => {
                 cover.style.display = 'none';
             }, 1000);
         }
 
-        // Countdown Timer - Target: 21 June 2026
+        // ==================== COUNTDOWN ====================
         const khitananDate = new Date('2026-06-21T09:00:00').getTime();
 
         function updateCountdown() {
@@ -1153,26 +1485,10 @@
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Music Toggle
-        let isPlaying = false;
-        function toggleMusic() {
-            const btn = document.getElementById('musicBtn');
-            const icon = document.getElementById('musicIcon');
-            isPlaying = !isPlaying;
-            
-            if (isPlaying) {
-                btn.classList.add('playing');
-                icon.className = 'bi bi-pause-fill';
-            } else {
-                btn.classList.remove('playing');
-                icon.className = 'bi bi-music-note-beamed';
-            }
-        }
-
-        // Copy to clipboard
+        // ==================== COPY TO CLIPBOARD ====================
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(() => {
-                alert('Nomor rekening berhasil disalin: ' + text);
+                showToast('Nomor rekening berhasil disalin!', true);
             }).catch(() => {
                 const textarea = document.createElement('textarea');
                 textarea.value = text;
@@ -1180,41 +1496,11 @@
                 textarea.select();
                 document.execCommand('copy');
                 document.body.removeChild(textarea);
-                alert('Nomor rekening berhasil disalin: ' + text);
+                showToast('Nomor rekening berhasil disalin!', true);
             });
         }
 
-        // Wish Form Submit
-        document.getElementById('wishForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const name = document.getElementById('wishName').value;
-            const status = document.getElementById('wishStatus').value;
-            const message = document.getElementById('wishMessage').value;
-
-            let statusClass = 'status-hadir';
-            if (status === 'Tidak Hadir') statusClass = 'status-tidak';
-            else if (status === 'Masih Ragu') statusClass = 'status-ragu';
-
-            const wishCard = document.createElement('div');
-            wishCard.className = 'wish-card';
-            wishCard.style.animation = 'fadeInUp 0.5s ease';
-            wishCard.innerHTML = `
-                <div class="wish-header">
-                    <span class="wish-name">${name}</span>
-                    <span class="wish-status ${statusClass}">${status}</span>
-                </div>
-                <p class="wish-message">${message}</p>
-            `;
-
-            const container = document.getElementById('wishesContainer');
-            container.insertBefore(wishCard, container.firstChild);
-
-            document.getElementById('wishForm').reset();
-            alert('Terima kasih! Ucapan Anda telah terkirim.');
-        });
-
-        // Scroll to top button
+        // ==================== SCROLL TO TOP ====================
         window.addEventListener('scroll', function() {
             const scrollBtn = document.getElementById('scrollTopBtn');
             if (window.scrollY > 500) {
@@ -1228,14 +1514,9 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            });
+        // ==================== INIT ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderWishes();
         });
     </script>
 </body>
