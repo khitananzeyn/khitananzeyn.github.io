@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Walimatul Khitan - Muhammad Zeyn Kenzi Hamizan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/playfair-display@5.0.8/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/cormorant-garamond@5.0.8/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/poppins@5.0.8/index.css">
+    <style>
+        :root {
+            --navy: #1a2a4a;
+            --navy-dark: #0f1d35;
+            --gold: #b8956a;
+            --gold-light: #d4b896;
+            --gold-bright: #c9a96e;
+            --cream: #faf7f2;
+            --cream-dark: #f0ebe3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--navy-dark);
+            background-color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        h1, h2, h3, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-cormorant {
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Cover */
+        #cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 9999;
+            background: linear-gradient(rgba(15,29,53,0.5), rgba(15,29,53,0.7)),
+                        url('https://image.qwenlm.ai/public_source/848292e7-2347-480b-a76c-3db11be0b2cd/17578e1d3-4b1f-4f11-b4ae-4eb81bee3376.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        #cover.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .cover-content {
+            text-align: center;
+            color: white;
+            padding: 2rem;
+            animation: fadeInUp 1.5s ease;
+            max-width: 500px;
+        }
+
+        .cover-content .ornament {
+            font-size: 2.5rem;
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .cover-content .cover-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .cover-content h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.1;
+        }
+
+        .cover-content .cover-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #f1dd7b;
+            margin: 1rem 0;
+            font-style: italic;
+        }
+
+        .cover-content .date-cover {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            margin: 1rem 0;
+        }
+
+        .cover-content .to-text {
+            font-size: 0.9rem;
+            margin-top: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .cover-content .guest-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin: 0.5rem 0 1.5rem;
+            padding: 0.5rem 1.5rem;
+            border: 1px solid rgba(212,184,150,0.5);
+            display: inline-block;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .btn-open {
+            background: var(--gold);
+            color: white;
+            border: none;
+            padding: 12px 40px;
+            border-radius: 50px;
+            font-size: 0.95rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-open:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184,149,106,0.4);
+            color: white;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(15,29,53,0.7), rgba(15,29,53,0.85)),
+                        url('https://image.qwenlm.ai/public_source/848292e7-2347-480b-a76c-3db11be0b2cd/1da64c52d-c430-4d28-a362-7f9da965727d.png') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero-content {
+            padding: 2rem;
+        }
+
+        .hero-content .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: var(--gold-light);
+        }
+
+        .hero-content .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
+        }
+
+        .hero-content .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--gold-light);
+            font-style: italic;
+            margin: 1rem 0;
+        }
+
+        .hero-content .hero-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            margin-top: 1rem;
+        }
+
+        .hero-ornament {
+            width: 200px;
+            height: 2px;
+            background: var(--gold-light);
+            margin: 1.5rem auto;
+            position: relative;
+        }
+
+        .hero-ornament::before {
+            content: '❖';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--gold-light);
+            background: transparent;
+            padding: 0 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title .ornament-text {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            font-size: 1.1rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--navy-dark);
+            margin: 0.5rem 0;
+        }
+
+        .section-title .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .section-title .divider .line {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title .divider .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        /* Bismillah */
+        #bismillah {
+            background: var(--cream);
+            text-align: center;
+        }
+
+        .bismillah-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-style: italic;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .quote-source {
+            color: var(--gold);
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        /* Child Section */
+        #anak {
+            background: var(--cream-dark);
+        }
+
+        .child-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .child-img-wrapper {
+            width: 280px;
+            height: 350px;
+            margin: 0 auto 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 5px solid var(--gold-light);
+            box-shadow: 0 15px 40px rgba(184,149,106,0.3);
+            position: relative;
+        }
+
+        .child-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .child-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--navy-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .child-fullname {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .child-parent {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .child-parent strong {
+            color: var(--navy-dark);
+            font-size: 1.05rem;
+        }
+
+        .parent-label {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Event Section */
+        #acara {
+            background: var(--cream);
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(26,42,74,0.1);
+            border: 2px solid var(--gold-light);
+            height: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-icon {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--navy-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-detail {
+            margin-bottom: 1.2rem;
+        }
+
+        .event-detail .label {
+            font-size: 0.85rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .event-detail .value {
+            font-size: 1.1rem;
+            color: var(--navy-dark);
+            font-weight: 500;
+        }
+
+        .event-detail .value-address {
+            font-size: 0.95rem;
+            color: var(--navy-dark);
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .btn-map {
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-map:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Countdown */
+        #countdown-section {
+            background: linear-gradient(rgba(15,29,53,0.9), rgba(15,29,53,0.9)),
+                        url('https://image.qwenlm.ai/public_source/848292e7-2347-480b-a76c-3db11be0b2cd/18beb4d63-f456-4d32-a505-3a0b7ac99586.png') center/cover no-repeat fixed;
+            color: white;
+            text-align: center;
+        }
+
+        #countdown-section .section-title h2 {
+            color: white;
+        }
+
+        #countdown-section .section-title .ornament-text {
+            color: var(--gold-light);
+        }
+
+        #countdown-section .section-title .divider .line,
+        #countdown-section .section-title .divider .dot {
+            background: var(--gold-light);
+        }
+
+        .countdown-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .countdown-box {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184,149,106,0.4);
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
+            min-width: 120px;
+            transition: transform 0.3s;
+        }
+
+        .countdown-box:hover {
+            transform: scale(1.05);
+        }
+
+        .countdown-box .number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1;
+        }
+
+        .countdown-box .label {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
+
+        /* RSVP */
+        #rsvp {
+            background: var(--cream-dark);
+        }
+
+        .rsvp-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(26,42,74,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(184,149,106,0.3);
+        }
+
+        .form-control, .form-select {
+            border: 1px solid #e0d8cc;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(184,149,106,0.15);
+        }
+
+        .form-label {
+            font-size: 0.9rem;
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-submit {
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Wishes */
+        .wish-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 20px rgba(26,42,74,0.08);
+            border-left: 4px solid var(--gold);
+        }
+
+        .wish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .wish-name {
+            font-weight: 600;
+            color: var(--navy-dark);
+            font-size: 1.05rem;
+        }
+
+        .wish-status {
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+        }
+
+        .status-hadir {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-tidak {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-ragu {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .wish-message {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Gift Section */
+        #hadiah {
+            background: var(--cream);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        footer .footer-names {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            opacity: 0.7;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        footer .yang-mengundang {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212,184,150,0.3);
+        }
+
+        footer .yang-mengundang h5 {
+            color: var(--gold-light);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.8rem;
+        }
+
+        footer .yang-mengundang p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* Music Button */
+        .music-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--gold-light);
+            border: 2px solid var(--gold);
+            font-size: 1.3rem;
+            z-index: 1000;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(26,42,74,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .music-btn:hover {
+            transform: scale(1.1);
+            background: var(--gold);
+            color: white;
+        }
+
+        .music-btn.playing {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(184,149,106,0.5); }
+            50% { box-shadow: 0 5px 30px rgba(184,149,106,0.8); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--gold-light);
+            border: 2px solid var(--gold);
+            font-size: 1.2rem;
+            z-index: 1000;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .scroll-top:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        /* Islamic ornament decoration */
+        .islamic-divider {
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cover-content h1 {
+                font-size: 2rem;
+            }
+
+            .cover-content .cover-name {
+                font-size: 1.5rem;
+            }
+
+            .hero-content .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-content .hero-name {
+                font-size: 1.8rem;
+            }
+
+            .section-title h2 {
+                font-size: 2rem;
+            }
+
+            .child-img-wrapper {
+                width: 220px;
+                height: 280px;
+            }
+
+            .child-name {
+                font-size: 1.8rem;
+            }
+
+            .countdown-box {
+                min-width: 80px;
+                padding: 1.5rem 1rem;
+            }
+
+            .countdown-box .number {
+                font-size: 2.5rem;
+            }
+
+            .rsvp-form {
+                padding: 2rem 1.5rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .cover-content h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero-content .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-content .hero-name {
+                font-size: 1.5rem;
+            }
+
+            .countdown-wrapper {
+                gap: 10px;
+            }
+
+            .countdown-box {
+                min-width: 70px;
+                padding: 1rem 0.8rem;
+            }
+
+            .countdown-box .number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="no-scroll">
+
+    <!-- Cover -->
+    <div id="cover">
+        <div class="cover-content">
+            <div class="ornament">❖</div>
+            <div class="cover-subtitle">Undangan</div>
+            <h1>Walimatul Khitan</h1>
+            <div class="cover-name">Muhammad Zeyn Kenzi Hamizan</div>
+            <div class="hero-ornament"></div>
+            <div class="date-cover">Minggu, 21 Juni 2026</div>
+            <div class="to-text">Kepada Yth. Bapak/Ibu/Saudara/i</div>
+            <div class="guest-name" id="guestName">Tamu Undangan</div>
+            <br>
+            <button class="btn-open" onclick="openInvitation()">
+                <i class="bi bi-envelope-heart me-2"></i>Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section id="hero">
+        <div class="hero-content" data-aos="fade-up">
+            <div class="subtitle">Undangan Walimatul Khitan</div>
+            <div class="hero-title">Muhammad Zeyn<br>Kenzi Hamizan</div>
+            <div class="hero-ornament"></div>
+            <div class="hero-date">21 . 06 . 2026</div>
+        </div>
+    </section>
+
+    <!-- Bismillah & Quote -->
+    <section id="bismillah">
+        <div class="container">
+            <div data-aos="fade-up">
+                <div class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+                <p class="quote-text">
+                    "Kemudian Kami wahyukan kepadamu (Muhammad): 'Ikutilah agama Ibrahim seorang yang hanif 
+                    dan dia bukanlah termasuk orang-orang musyrik.'"
+                </p>
+                <p class="quote-source">— QS. An-Nahl: 123 —</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Child Section -->
+    <section id="anak">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="ornament-text">Putra Kami</div>
+                <h2>Muhammad Zeyn Kenzi Hamizan</h2>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="child-card">
+                        <div class="child-img-wrapper">
+                            <img src="https://i.imgur.com/NarTP9T.jpeg" alt="Muhammad Zeyn Kenzi Hamizan">
+                        </div>
+                        <div class="islamic-divider"></div>
+                        <div class="parent-label">Putra dari</div>
+                        <p class="child-parent">
+                            <strong>Bapak Sefran Jamil</strong><br>
+                            &<br>
+                            <strong>Ibu Miftakhul Janah, A.md</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event -->
+    <section id="acara">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="ornament-text"></div>
+                <h2>EVENT</h2>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="event-card">
+                        <div class="event-icon"><i class="bi bi-star-fill"></i></div>
+                        <h3 class="event-title">Walimatul Khitan</h3>
+                        <div class="event-detail">
+                            <div class="label">Hari & Tanggal</div>
+                            <div class="value">Minggu, 21 Juni 2026</div>
+                        </div>
+                        <div class="event-detail">
+                            <div class="label">Waktu</div>
+                            <div class="value">09.00 WIB s/d Selesai</div>
+                        </div>
+                        <div class="event-detail">
+                            <div class="label">Tempat</div>
+                            <div class="value-address">
+                                Perumahan Griya Mataram Asri 2<br>
+                                Blok A.23<br>
+                                Jl. Padat Karya Lr. Melati 2<br>
+                                Rt.02/Rw.01<br>
+                                Sugiwaras, Kel. Talang Jambe<br>
+                                Kec. Sukarami, Palembang
+                            </div>
+                        </div>
+                        <a href="https://maps.google.com/?q=Perumahan+Griya+Mataram+Asri+Palembang" target="_blank" class="btn btn-map">
+                            <i class="bi bi-geo-alt-fill me-2"></i>Lihat Lokasi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown -->
+    <section id="countdown-section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="ornament-text">Menghitung Hari</div>
+                <h2>Countdown</h2>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+
+            <div class="countdown-wrapper" data-aos="zoom-in">
+                <div class="countdown-box">
+                    <div class="number" id="days">00</div>
+                    <div class="label">Hari</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="number" id="hours">00</div>
+                    <div class="label">Jam</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="number" id="minutes">00</div>
+                    <div class="label">Menit</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="number" id="seconds">00</div>
+                    <div class="label">Detik</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP & Wishes -->
+    <section id="rsvp">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="ornament-text">Konfirmasi Kehadiran</div>
+                <h2>RSVP & Ucapan</h2>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="rsvp-form">
+                        <h4 class="text-center mb-4 font-playfair">Kirim Ucapan</h4>
+                        <form id="wishForm">
+                            <div class="mb-3">
+                                <label class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="wishName" placeholder="Masukkan nama Anda" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Konfirmasi Kehadiran</label>
+                                <select class="form-select" id="wishStatus" required>
+                                    <option value="">Pilih status kehadiran</option>
+                                    <option value="Hadir">Hadir</option>
+                                    <option value="Tidak Hadir">Tidak Hadir</option>
+                                    <option value="Masih Ragu">Masih Ragu</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label class="form-label">Ucapan & Doa</label>
+                                <textarea class="form-control" id="wishMessage" rows="4" placeholder="Tulis ucapan dan doa untuk Muhammad Zeyn..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">
+                                <i class="bi bi-send-fill me-2"></i>Kirim Ucapan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-lg-6" data-aos="fade-left">
+                    <h4 class="text-center mb-4 font-playfair">Ucapan Tamu</h4>
+                    <div id="wishesContainer" style="max-height: 500px; overflow-y: auto; padding-right: 10px;">
+                        <div class="wish-card">
+                            <div class="wish-header">
+                                <span class="wish-name">Budi Santoso</span>
+                                <span class="wish-status status-hadir">Hadir</span>
+                            </div>
+                            <p class="wish-message">Semoga Muhammad Zeyn menjadi anak yang sholeh, cerdas, dan berbakti kepada orang tua. Aamiin. 🤲</p>
+                        </div>
+                        <div class="wish-card">
+                            <div class="wish-header">
+                                <span class="wish-name">Anisa Rahma</span>
+                                <span class="wish-status status-hadir">Hadir</span>
+                            </div>
+                            <p class="wish-message">Barakallah fiik untuk Muhammad Zeyn. Semoga selalu dalam lindungan Allah SWT. </p>
+                        </div>
+                        <div class="wish-card">
+                            <div class="wish-header">
+                                <span class="wish-name">Rizky Firmansyah</span>
+                                <span class="wish-status status-ragu">Masih Ragu</span>
+                            </div>
+                            <p class="wish-message">Selamat ya untuk khitanan Muhammad Zeyn! Semoga menjadi anak yang sholeh dan sholehah. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gift Section -->
+    <section id="hadiah">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="ornament-text">Kado & Hadiah</div>
+                <h2>Kirim Hadiah</h2>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-5" data-aos="fade-up">
+                    <div class="event-card">
+                        <div class="event-icon"><i class="bi bi-bank"></i></div>
+                        <h5 class="font-playfair mb-3" style="font-size: 1.3rem;">Bank Central Asia</h5>
+                        <p class="mb-1" style="font-size: 0.9rem; color: #777;">a.n. Miftakhul Janah</p>
+                        <p class="mb-3" style="font-size: 1.3rem; font-weight: 700; color: var(--navy-dark); letter-spacing: 2px;">617 504 0548</p>
+                        <button class="btn btn-map" onclick="copyToClipboard('6175040548')">
+                            <i class="bi bi-clipboard me-2"></i>Salin No. Rekening
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container" data-aos="fade-up">
+            <div class="footer-names">Walimatul Khitan<br>Muhammad Zeyn Kenzi Hamizan</div>
+            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila<br>Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu<br>kepada putra kami.</p>
+            <p style="margin-top: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--gold-light);">
+                Wassalamu'alaikum Wr. Wb.
+            </p>
+            <div class="yang-mengundang">
+                <h5>Yang Mengundang</h5>
+                <p>1. Kel. Besar M. Khobir, S.Sos</p>
+                <p>2. Kel. Besar Sefran Jamil</p>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.8rem;">
+                © 2026 Walimatul Khitan Muhammad Zeyn Kenzi Hamizan<br>
+                
+            </p>
+        </div>
+    </footer>
+
+    <!-- Music Button -->
+    <button class="music-btn" id="musicBtn" onclick="toggleMusic()">
+        <i class="bi bi-music-note-beamed" id="musicIcon"></i>
+    </button>
+
+    <!-- Scroll to top -->
+    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Get guest name from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const guest = urlParams.get('to');
+        if (guest) {
+            document.getElementById('guestName').textContent = decodeURIComponent(guest);
+        }
+
+        // Open Invitation
+        function openInvitation() {
+            const cover = document.getElementById('cover');
+            cover.classList.add('hidden');
+            document.body.classList.remove('no-scroll');
+            document.getElementById('musicBtn').style.display = 'flex';
+            
+            setTimeout(() => {
+                cover.style.display = 'none';
+            }, 1000);
+        }
+
+        // Countdown Timer - Target: 21 June 2026
+        const khitananDate = new Date('2026-06-21T09:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = khitananDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Music Toggle
+        let isPlaying = false;
+        function toggleMusic() {
+            const btn = document.getElementById('musicBtn');
+            const icon = document.getElementById('musicIcon');
+            isPlaying = !isPlaying;
+            
+            if (isPlaying) {
+                btn.classList.add('playing');
+                icon.className = 'bi bi-pause-fill';
+            } else {
+                btn.classList.remove('playing');
+                icon.className = 'bi bi-music-note-beamed';
+            }
+        }
+
+        // Copy to clipboard
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Nomor rekening berhasil disalin: ' + text);
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                alert('Nomor rekening berhasil disalin: ' + text);
+            });
+        }
+
+        // Wish Form Submit
+        document.getElementById('wishForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('wishName').value;
+            const status = document.getElementById('wishStatus').value;
+            const message = document.getElementById('wishMessage').value;
+
+            let statusClass = 'status-hadir';
+            if (status === 'Tidak Hadir') statusClass = 'status-tidak';
+            else if (status === 'Masih Ragu') statusClass = 'status-ragu';
+
+            const wishCard = document.createElement('div');
+            wishCard.className = 'wish-card';
+            wishCard.style.animation = 'fadeInUp 0.5s ease';
+            wishCard.innerHTML = `
+                <div class="wish-header">
+                    <span class="wish-name">${name}</span>
+                    <span class="wish-status ${statusClass}">${status}</span>
+                </div>
+                <p class="wish-message">${message}</p>
+            `;
+
+            const container = document.getElementById('wishesContainer');
+            container.insertBefore(wishCard, container.firstChild);
+
+            document.getElementById('wishForm').reset();
+            alert('Terima kasih! Ucapan Anda telah terkirim.');
+        });
+
+        // Scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 500) {
+                scrollBtn.style.display = 'flex';
+            } else {
+                scrollBtn.style.display = 'none';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
