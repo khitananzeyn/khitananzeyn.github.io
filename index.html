@@ -27,12 +27,15 @@
             box-sizing: border-box;
         }
 
+        /* --- FIX RESPONSIVE: Mencegah scroll ke samping di mobile --- */
         html, body {
-            overflow-x: hidden; /* Mencegah scroll horizontal di mobile */
+            overflow-x: hidden;
             width: 100%;
         }
 
-        html { scroll-behavior: smooth; }
+        html {
+            scroll-behavior: smooth;
+        }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -41,200 +44,915 @@
             font-size: 16px;
         }
 
-        body.no-scroll { overflow: hidden; }
+        body.no-scroll {
+            overflow: hidden;
+        }
 
-        h1, h2, h3, .font-playfair { font-family: 'Playfair Display', serif; }
-        .font-cormorant { font-family: 'Cormorant Garamond', serif; }
+        h1, h2, h3, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-cormorant {
+            font-family: 'Cormorant Garamond', serif;
+        }
 
         /* SoundCloud hidden */
         #sc-player {
-            position: absolute; width: 1px; height: 1px;
-            opacity: 0; pointer-events: none; z-index: -1;
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: -1;
         }
 
         /* Cover */
         #cover {
-            position: fixed; top: 0; left: 0; width: 100%;
-            height: 100vh; height: 100dvh; z-index: 9999;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+            z-index: 9999;
             background: linear-gradient(rgba(15,29,53,0.55), rgba(15,29,53,0.75)),
                         url('https://image.qwenlm.ai/public_source/848292e7-2347-480b-a76c-3db11be0b2cd/17578e1d3-4b1f-4f11-b4ae-4eb81bee3376.png') center/cover no-repeat;
-            display: flex; align-items: center; justify-content: center;
-            transition: opacity 1s ease, visibility 1s ease; padding: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 1s ease, visibility 1s ease;
+            padding: 1rem;
         }
 
-        #cover.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+        #cover.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
 
         .cover-content {
-            text-align: center; color: white; padding: 1.5rem;
-            animation: fadeInUp 1.5s ease; width: 100%; max-width: 480px;
+            text-align: center;
+            color: white;
+            padding: 1.5rem;
+            animation: fadeInUp 1.5s ease;
+            max-width: 480px;
+            width: 100%;
         }
 
-        .cover-content .ornament { font-size: clamp(1.8rem, 5vw, 2.5rem); color: var(--gold-light); margin-bottom: 0.5rem; }
-        .cover-content .cover-subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.9rem, 3vw, 1.1rem); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--gold-light); }
-        .cover-content h1 { font-size: clamp(1.8rem, 7vw, 2.5rem); font-weight: 700; margin-bottom: 0.3rem; text-shadow: 2px 2px 10px rgba(0,0,0,0.3); line-height: 1.2; }
-        .cover-content .cover-name { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 5vw, 1.8rem); color: var(--gold-light); margin: 0.8rem 0; font-style: italic; line-height: 1.3; }
-        .cover-content .date-cover { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 3.5vw, 1.2rem); letter-spacing: 2px; margin: 1rem 0; }
-        .cover-content .to-text { font-size: clamp(0.8rem, 2.5vw, 0.9rem); margin-top: 1.2rem; opacity: 0.9; }
-        
+        .cover-content .ornament {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            color: var(--gold-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .cover-content .cover-subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.9rem, 3vw, 1.1rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: var(--gold-light);
+        }
+
+        .cover-content h1 {
+            font-size: clamp(1.8rem, 7vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            line-height: 1.1;
+        }
+
+        .cover-content .cover-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.3rem, 5vw, 2rem);
+            color: var(--gold-light);
+            margin: 0.8rem 0;
+            font-style: italic;
+            line-height: 1.3;
+        }
+
+        .cover-content .date-cover {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 3.5vw, 1.2rem);
+            letter-spacing: 2px;
+            margin: 1rem 0;
+        }
+
+        .cover-content .to-text {
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            margin-top: 1.2rem;
+            opacity: 0.9;
+        }
+
         .cover-content .guest-name {
-            font-weight: 600; font-size: clamp(0.95rem, 3vw, 1.1rem);
-            margin: 0.5rem 0 1.2rem; padding: 0.5rem 1.2rem;
-            border: 1px solid rgba(212,184,150,0.5); display: inline-block;
-            border-radius: 4px; background: rgba(255,255,255,0.1);
-            max-width: 100%; word-wrap: break-word;
+            font-weight: 600;
+            font-size: clamp(0.95rem, 3vw, 1.1rem);
+            margin: 0.5rem 0 1.2rem;
+            padding: 0.5rem 1.2rem;
+            border: 1px solid rgba(212,184,150,0.5);
+            display: inline-block;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.1);
+            max-width: 100%;
+            word-wrap: break-word;
         }
 
         .btn-open {
-            background: var(--gold); color: white; border: none;
-            padding: 12px 30px; border-radius: 50px; font-size: clamp(0.8rem, 2.5vw, 0.95rem);
-            letter-spacing: 1px; text-transform: uppercase; transition: all 0.3s ease; cursor: pointer;
+            background: var(--gold);
+            color: white;
+            border: none;
+            padding: 12px 35px;
+            border-radius: 50px;
+            font-size: clamp(0.8rem, 2.5vw, 0.95rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
 
-        .btn-open:hover { background: var(--gold-light); transform: translateY(-2px); color: white; }
+        .btn-open:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(184,149,106,0.4);
+            color: white;
+        }
 
         /* Hero Section */
         #hero {
-            min-height: 100vh; min-height: 100dvh;
+            min-height: 100vh;
+            min-height: 100dvh;
             background: linear-gradient(rgba(15,29,53,0.7), rgba(15,29,53,0.85)),
                         url('https://image.qwenlm.ai/public_source/848292e7-2347-480b-a76c-3db11be0b2cd/1da64c52d-c430-4d28-a362-7f9da965727d.png') center/cover no-repeat;
-            display: flex; align-items: center; justify-content: center;
-            text-align: center; color: white; position: relative; padding: 2rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 2rem 1rem;
         }
 
-        .hero-content { padding: 1rem; width: 100%; max-width: 600px; }
-        .hero-content .subtitle { font-family: 'Cormorant Garamond', serif; font-size: clamp(0.9rem, 3vw, 1.2rem); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 0.5rem; color: var(--gold-light); }
-        .hero-content .hero-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 8vw, 3rem); font-weight: 700; line-height: 1.2; margin-bottom: 0.5rem; }
-        .hero-content .hero-date { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 4vw, 1.5rem); letter-spacing: 3px; margin-top: 1rem; }
+        .hero-content {
+            padding: 1rem;
+            max-width: 600px;
+        }
+
+        .hero-content .subtitle {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 0.5rem;
+            color: var(--gold-light);
+        }
+
+        .hero-content .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.15;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.4);
+        }
+
+        .hero-content .hero-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 6vw, 2.5rem);
+            color: var(--gold-light);
+            font-style: italic;
+            margin: 1rem 0;
+        }
+
+        .hero-content .hero-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            letter-spacing: 3px;
+            margin-top: 1rem;
+        }
 
         .hero-ornament {
-            width: 150px; max-width: 60%; height: 2px;
-            background: var(--gold-light); margin: 1.2rem auto; position: relative;
+            width: 180px;
+            max-width: 60%;
+            height: 2px;
+            background: var(--gold-light);
+            margin: 1.2rem auto;
+            position: relative;
         }
+
         .hero-ornament::before {
-            content: '❖'; position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%); color: var(--gold-light);
-            background: transparent; padding: 0 10px; font-size: 1.1rem;
+            content: '❖';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: var(--gold-light);
+            background: transparent;
+            padding: 0 10px;
+            font-size: 1.1rem;
         }
 
-        /* Sections & Typography */
-        section { padding: clamp(50px, 8vw, 80px) 0; position: relative; }
-        .section-title { text-align: center; margin-bottom: clamp(2rem, 5vw, 3rem); padding: 0 1rem; }
-        .section-title .ornament-text { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: clamp(0.95rem, 2.5vw, 1.1rem); letter-spacing: 3px; text-transform: uppercase; }
-        .section-title h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); color: var(--navy-dark); margin: 0.5rem 0; line-height: 1.2; }
-        .section-title .divider { display: flex; align-items: center; justify-content: center; gap: 15px; margin-top: 1rem; }
-        .section-title .divider .line { width: 50px; height: 1px; background: var(--gold); }
-        .section-title .divider .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+        /* Sections */
+        section {
+            padding: clamp(50px, 8vw, 80px) 0;
+            position: relative;
+        }
 
-        /* General Content Tweaks */
-        #bismillah { background: var(--cream); text-align: center; padding: clamp(40px, 6vw, 60px) 1rem; }
-        .bismillah-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.5rem, 5vw, 2rem); color: var(--gold); margin-bottom: 1.5rem; }
-        .quote-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 3vw, 1.1rem); font-style: italic; color: #555; max-width: 700px; margin: 0 auto; line-height: 1.8; }
+        .section-title {
+            text-align: center;
+            margin-bottom: clamp(2rem, 5vw, 3rem);
+            padding: 0 1rem;
+        }
 
-        #anak { background: var(--cream-dark); }
-        .child-card { text-align: center; padding: 1rem; }
+        .section-title .ornament-text {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--gold);
+            font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            color: var(--navy-dark);
+            margin: 0.5rem 0;
+            line-height: 1.2;
+        }
+
+        .section-title .divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 1rem;
+        }
+
+        .section-title .divider .line {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+        }
+
+        .section-title .divider .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--gold);
+            border-radius: 50%;
+        }
+
+        /* Bismillah */
+        #bismillah {
+            background: var(--cream);
+            text-align: center;
+            padding: clamp(40px, 6vw, 60px) 1rem;
+        }
+
+        .bismillah-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .quote-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            font-style: italic;
+            color: #555;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        .quote-source {
+            color: var(--gold);
+            font-weight: 600;
+            margin-top: 1rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+        }
+
+        /* Child Section */
+        #anak {
+            background: var(--cream-dark);
+        }
+
+        .child-card {
+            text-align: center;
+            padding: 1.5rem 1rem;
+        }
+
         .child-img-wrapper {
-            width: min(250px, 70vw); height: min(320px, 85vw);
-            margin: 0 auto 1.5rem; border-radius: 15px; overflow: hidden;
-            border: 4px solid var(--gold-light); box-shadow: 0 10px 30px rgba(184,149,106,0.3);
+            width: min(280px, 75vw);
+            height: min(350px, 90vw);
+            margin: 0 auto 2rem;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 5px solid var(--gold-light);
+            box-shadow: 0 15px 40px rgba(184,149,106,0.3);
+            position: relative;
         }
-        .child-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .child-name { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 5vw, 2rem); color: var(--navy-dark); margin-bottom: 0.5rem; }
-        .parent-label { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: clamp(1.1rem, 3.5vw, 1.3rem); font-weight: 600; margin-bottom: 0.5rem; }
 
-        /* Event */
-        #acara { background: var(--cream); }
+        .child-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .child-name {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            color: var(--navy-dark);
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .child-fullname {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .child-parent {
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .child-parent strong {
+            color: var(--navy-dark);
+            font-size: clamp(0.95rem, 2.8vw, 1.05rem);
+        }
+
+        .parent-label {
+            color: var(--gold);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.1rem, 3.5vw, 1.3rem);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Event Section */
+        #acara {
+            background: var(--cream);
+        }
+
         .event-card {
-            background: white; border-radius: 20px;
-            padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1rem, 4vw, 2rem);
-            text-align: center; box-shadow: 0 15px 40px rgba(26,42,74,0.08);
-            border: 1px solid var(--gold-light); height: 100%; position: relative;
+            background: white;
+            border-radius: 20px;
+            padding: clamp(2rem, 5vw, 3rem) clamp(1.5rem, 4vw, 2rem);
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(26,42,74,0.1);
+            border: 2px solid var(--gold-light);
+            height: 100%;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+
         .event-card::before {
-            content: ''; position: absolute; top: 0; left: 0; right: 0;
-            height: 4px; background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold));
         }
-        .event-icon { font-size: clamp(2rem, 6vw, 2.5rem); color: var(--gold); margin-bottom: 1rem; }
-        .event-title { font-family: 'Playfair Display', serif; font-size: clamp(1.4rem, 5vw, 1.8rem); margin-bottom: 1.5rem; }
-        .event-detail { margin-bottom: 1rem; }
-        .event-detail .label { font-size: clamp(0.75rem, 2.2vw, 0.85rem); color: var(--gold); font-weight: 600; }
-        .event-detail .value, .event-detail .value-address { font-size: clamp(0.9rem, 2.8vw, 1rem); color: var(--navy-dark); font-weight: 500; line-height: 1.5; }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-icon {
+            font-size: clamp(2.5rem, 6vw, 3rem);
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .event-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            color: var(--navy-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .event-detail {
+            margin-bottom: 1.2rem;
+        }
+
+        .event-detail .label {
+            font-size: clamp(0.75rem, 2.2vw, 0.85rem);
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+        }
+
+        .event-detail .value {
+            font-size: clamp(1rem, 2.8vw, 1.1rem);
+            color: var(--navy-dark);
+            font-weight: 500;
+        }
+
+        .event-detail .value-address {
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+            color: var(--navy-dark);
+            font-weight: 500;
+            line-height: 1.6;
+        }
 
         .btn-map {
-            background: var(--navy); color: white; border: none;
-            padding: 10px 20px; border-radius: 50px; font-size: 0.85rem;
-            margin-top: 1rem; display: inline-block; text-decoration: none;
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-size: clamp(0.8rem, 2.3vw, 0.9rem);
+            letter-spacing: 1px;
+            margin-top: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-map:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
         }
 
         /* Countdown */
         #countdown-section {
             background: linear-gradient(rgba(15,29,53,0.9), rgba(15,29,53,0.9)),
                         url('https://image.qwenlm.ai/public_source/848292e7-2347-480b-a76c-3db11be0b2cd/18beb4d63-f456-4d32-a505-3a0b7ac99586.png') center/cover no-repeat fixed;
-            color: white; text-align: center;
+            color: white;
+            text-align: center;
         }
-        #countdown-section h2, #countdown-section .ornament-text { color: white; }
+
+        #countdown-section .section-title h2 {
+            color: white;
+        }
+
+        #countdown-section .section-title .ornament-text {
+            color: var(--gold-light);
+        }
+
+        #countdown-section .section-title .divider .line,
+        #countdown-section .section-title .divider .dot {
+            background: var(--gold-light);
+        }
+
         .countdown-wrapper {
-            display: flex; justify-content: center; gap: 10px;
-            flex-wrap: wrap; margin-top: 2rem; padding: 0 0.5rem;
+            display: flex;
+            justify-content: center;
+            gap: clamp(10px, 2vw, 20px);
+            flex-wrap: wrap;
+            margin-top: 2rem;
+            padding: 0 1rem;
         }
+
         .countdown-box {
-            background: rgba(255,255,255,0.1); backdrop-filter: blur(5px);
-            border: 1px solid rgba(184,149,106,0.4); border-radius: 12px;
-            padding: 1rem 0.5rem; width: calc(25% - 10px); min-width: 65px; max-width: 90px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(184,149,106,0.4);
+            border-radius: 15px;
+            padding: clamp(1.2rem, 3vw, 2rem) clamp(1rem, 2.5vw, 1.5rem);
+            min-width: clamp(70px, 18vw, 120px);
+            flex: 1;
+            max-width: 140px;
+            transition: transform 0.3s;
         }
-        .countdown-box .number { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 6vw, 2.5rem); font-weight: 700; color: var(--gold-light); }
-        .countdown-box .label { font-size: clamp(0.65rem, 2vw, 0.8rem); margin-top: 0.3rem; }
+
+        .countdown-box:hover {
+            transform: scale(1.05);
+        }
+
+        .countdown-box .number {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 7vw, 3.5rem);
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1;
+        }
+
+        .countdown-box .label {
+            font-size: clamp(0.7rem, 2vw, 0.85rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+        }
 
         /* RSVP */
-        #rsvp { background: var(--cream-dark); overflow: hidden; }
+        #rsvp {
+            background: var(--cream-dark);
+        }
+
         .rsvp-form {
-            background: white; padding: clamp(1.2rem, 4vw, 2.5rem);
-            border-radius: 20px; box-shadow: 0 10px 40px rgba(26,42,74,0.05);
-            border: 1px solid rgba(184,149,106,0.3); width: 100%;
+            background: white;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(26,42,74,0.1);
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid rgba(184,149,106,0.3);
         }
-        .form-control, .form-select { border: 1px solid #e0d8cc; padding: 10px 15px; border-radius: 10px; font-size: 0.9rem; width: 100%; }
-        .btn-submit { background: var(--navy); color: white; border: none; padding: 12px; border-radius: 50px; font-size: 0.9rem; width: 100%; }
-        
-        .wishes-wrapper { max-height: 400px; overflow-y: auto; padding-right: 5px; margin-top: 1rem; }
-        .wishes-wrapper::-webkit-scrollbar { width: 5px; }
-        .wishes-wrapper::-webkit-scrollbar-track { background: #f1f1f1; }
-        .wishes-wrapper::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
-        
-        .wish-card { background: white; padding: 1rem; border-radius: 12px; margin-bottom: 0.8rem; border-left: 4px solid var(--gold); }
-        .wish-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 5px; }
-        .wish-name { font-weight: 600; font-size: 0.95rem; }
-        .wish-status { font-size: 0.7rem; padding: 3px 8px; border-radius: 20px; }
-        .status-hadir { background: #d4edda; color: #155724; }
-        .status-tidak { background: #f8d7da; color: #721c24; }
-        .status-ragu { background: #fff3cd; color: #856404; }
-        .wish-message { font-size: 0.85rem; color: #555; word-wrap: break-word; }
 
-        /* Footer & Utils */
-        footer { background: var(--navy-dark); color: white; text-align: center; padding: 2rem 1rem; }
+        .form-control, .form-select {
+            border: 1px solid #e0d8cc;
+            padding: 12px 15px;
+            border-radius: 10px;
+            font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(184,149,106,0.15);
+        }
+
+        .form-label {
+            font-size: clamp(0.85rem, 2.3vw, 0.9rem);
+            color: #555;
+            margin-bottom: 0.5rem;
+        }
+
+        .btn-submit {
+            background: var(--navy);
+            color: white;
+            border: none;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: var(--gold);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Wishes */
+        .wishes-wrapper {
+            max-height: 500px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+
+        .wishes-wrapper::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .wishes-wrapper::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        .wishes-wrapper::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 10px;
+        }
+
+        .wish-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 20px rgba(26,42,74,0.08);
+            border-left: 4px solid var(--gold);
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .wish-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.8rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .wish-name {
+            font-weight: 600;
+            color: var(--navy-dark);
+            font-size: clamp(0.95rem, 2.5vw, 1.05rem);
+        }
+
+        .wish-status {
+            font-size: 0.75rem;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .status-hadir {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-tidak {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-ragu {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .wish-message {
+            color: #555;
+            font-size: clamp(0.85rem, 2.3vw, 0.95rem);
+            line-height: 1.6;
+            word-wrap: break-word;
+        }
+
+        .wish-time {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.5rem;
+        }
+
+        .empty-wishes {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+            font-style: italic;
+        }
+
+        /* Gift Section */
+        #hadiah {
+            background: var(--cream);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy-dark);
+            color: white;
+            text-align: center;
+            padding: clamp(2rem, 5vw, 3rem) 1rem;
+        }
+
+        footer .footer-names {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            color: var(--gold-light);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: clamp(0.8rem, 2.3vw, 0.9rem);
+            margin-bottom: 0.3rem;
+            line-height: 1.6;
+        }
+
+        footer .yang-mengundang {
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(212,184,150,0.3);
+        }
+
+        footer .yang-mengundang h5 {
+            color: var(--gold-light);
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0.8rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+        }
+
+        footer .yang-mengundang p {
+            opacity: 0.9;
+            font-size: clamp(0.85rem, 2.3vw, 0.95rem);
+        }
+
+        /* Music Button */
         .music-btn {
-            position: fixed; bottom: 20px; right: 20px; width: 45px; height: 45px;
-            border-radius: 50%; background: var(--navy); color: var(--gold-light);
-            border: 2px solid var(--gold); display: none; align-items: center; justify-content: center; z-index: 1000;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--gold-light);
+            border: 2px solid var(--gold);
+            font-size: 1.2rem;
+            z-index: 1000;
+            cursor: pointer;
+            box-shadow: 0 5px 20px rgba(26,42,74,0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
         }
-        .music-btn.playing { animation: pulse 2s infinite; }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 5px 15px rgba(184,149,106,0.4); } 50% { box-shadow: 0 5px 25px rgba(184,149,106,0.7); } }
-        
-        /* Toast Notification */
-        .toast-custom {
-            position: fixed; top: 20px; right: 20px; background: var(--navy); color: white;
-            padding: 12px 20px; border-radius: 8px; z-index: 10000; transform: translateX(150%);
-            transition: transform 0.4s ease; max-width: 85%; font-size: 0.85rem;
-        }
-        .toast-custom.show { transform: translateX(0); }
-        .toast-custom.success { background: #28a745; }
 
-        /* Media Query Khusus Layar HP (Responsive 9:16) */
+        .music-btn:hover {
+            transform: scale(1.1);
+            background: var(--gold);
+            color: white;
+        }
+
+        .music-btn.playing {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 5px 20px rgba(184,149,106,0.5); }
+            50% { box-shadow: 0 5px 30px rgba(184,149,106,0.8); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Scroll to top */
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: var(--navy);
+            color: var(--gold-light);
+            border: 2px solid var(--gold);
+            font-size: 1.1rem;
+            z-index: 1000;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .scroll-top:hover {
+            background: var(--gold);
+            color: white;
+        }
+
+        .islamic-divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+
+        /* Toast notification */
+        .toast-custom {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--navy);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 10000;
+            transform: translateX(120%);
+            transition: transform 0.4s ease;
+            max-width: 90%;
+            font-size: 0.9rem;
+        }
+
+        .toast-custom.show {
+            transform: translateX(0);
+        }
+
+        .toast-custom.success {
+            background: #28a745;
+        }
+
+        /* Responsive Fixes untuk Mobile (Rasio 9:16) */
+        @media (max-width: 768px) {
+            .countdown-box {
+                min-width: 70px;
+                max-width: 100px;
+            }
+
+            .event-card {
+                margin-bottom: 0;
+            }
+
+            .wishes-wrapper {
+                max-height: 400px;
+            }
+
+            .rsvp-form {
+                margin: 0 0.5rem;
+            }
+        }
+
         @media (max-width: 576px) {
-            .countdown-box { width: calc(50% - 10px); max-width: none; margin-bottom: 10px; }
-            .section-title h2 { font-size: 1.8rem; }
-            .event-card { margin-bottom: 1rem; padding: 1.5rem 1rem; }
-            .row { margin-left: 0; margin-right: 0; }
-            .col-lg-6 { padding-left: 0; padding-right: 0; }
-            .rsvp-form { border-radius: 15px; padding: 1.5rem 1rem; border-left: none; border-right: none;}
+            .countdown-wrapper {
+                gap: 8px;
+            }
+            .countdown-box {
+                flex: 0 0 calc(50% - 10px);
+                min-width: unset;
+                max-width: unset;
+                margin-bottom: 10px;
+            }
+            .child-img-wrapper {
+                width: 80vw;
+                height: 100vw; /* Agar pas memanjang di layar HP */
+            }
+            .cover-content {
+                padding: 1rem;
+            }
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            .hero-content .hero-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .countdown-box .number {
+                font-size: 1.8rem;
+            }
+
+            .countdown-box .label {
+                font-size: 0.65rem;
+                letter-spacing: 1px;
+            }
+
+            .hero-ornament {
+                width: 140px;
+            }
+
+            .event-card {
+                padding: 1.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .countdown-box {
+                padding: 0.8rem 0.5rem;
+            }
+
+            .countdown-box .number {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Landscape phone */
+        @media (max-height: 500px) and (orientation: landscape) {
+            #cover {
+                padding: 0.5rem;
+            }
+
+            .cover-content .ornament {
+                font-size: 1.5rem;
+                margin-bottom: 0.2rem;
+            }
+
+            .cover-content h1 {
+                font-size: 1.5rem;
+            }
+
+            .cover-content .cover-name {
+                font-size: 1.1rem;
+                margin: 0.3rem 0;
+            }
+
+            .cover-content .date-cover {
+                font-size: 0.9rem;
+                margin: 0.5rem 0;
+            }
+
+            .cover-content .to-text {
+                margin-top: 0.5rem;
+            }
+
+            .cover-content .guest-name {
+                margin: 0.3rem 0 0.8rem;
+                padding: 0.3rem 1rem;
+            }
+
+            .btn-open {
+                padding: 8px 25px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* Tablet */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .countdown-box {
+                min-width: 100px;
+            }
         }
     </style>
 </head>
@@ -243,7 +961,7 @@
     <div class="toast-custom" id="toast"></div>
 
     <iframe id="sc-player" 
-            src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/ahmad-fauzi-403487334/sholawat-jibril-mutik-nida&color=%23b8956a&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false" 
+            src="https://w.soundcloud.com/player/?url=https%3A//on.soundcloud.com/DLzQduh3Ansk3BM79w&color=%23b8956a&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false" 
             allow="autoplay">
     </iframe>
 
@@ -273,23 +991,90 @@
         </div>
     </section>
 
+    <section id="bismillah">
+        <div class="container">
+            <div data-aos="fade-up">
+                <div class="bismillah-text">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+                <p class="quote-text">
+                    "Kemudian Kami wahyukan kepadamu (Muhammad): 'Ikutilah agama Ibrahim seorang yang hanif 
+                    dan dia bukanlah termasuk orang-orang musyrik.'"
+                </p>
+                <p class="quote-source">— QS. An-Nahl: 123 —</p>
+            </div>
+        </div>
+    </section>
+
     <section id="anak">
         <div class="container">
             <div class="section-title" data-aos="fade-up">
                 <div class="ornament-text">Putra Kami</div>
                 <h2>Muhammad Zeyn Kenzi Hamizan</h2>
-                <div class="divider"><div class="line"></div><div class="dot"></div><div class="line"></div></div>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
             </div>
+
             <div class="row justify-content-center">
                 <div class="col-md-6" data-aos="fade-up">
                     <div class="child-card">
                         <div class="child-img-wrapper">
-                            <img src="https://i.imgur.com/NarTP9T.jpeg" alt="Muhammad Zeyn">
+                            <img src="https://i.imgur.com/NarTP9T.jpeg" alt="Muhammad Zeyn Kenzi Hamizan">
                         </div>
+                        <h3 class="child-name">Muhammad Zeyn<br>Kenzi Hamizan</h3>
+                        <div class="islamic-divider"></div>
                         <div class="parent-label">Putra dari</div>
                         <p class="child-parent">
-                            <strong>Bapak Sefran Jamil</strong> & <strong>Ibu Miftakhul Janah</strong>
+                            <strong>Bapak Sefran Jamil</strong><br>
+                            &<br>
+                            <strong>Ibu Miftakhul Janah, A.md</strong>
                         </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="acara">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="ornament-text">Acara</div>
+                <h2>Walimatul Khitan</h2>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="event-card">
+                        <div class="event-icon"><i class="bi bi-star-fill"></i></div>
+                        <h3 class="event-title">Walimatul Khitan</h3>
+                        <div class="event-detail">
+                            <div class="label">Hari & Tanggal</div>
+                            <div class="value">Minggu, 21 Juni 2026</div>
+                        </div>
+                        <div class="event-detail">
+                            <div class="label">Waktu</div>
+                            <div class="value">09.00 WIB s/d Selesai</div>
+                        </div>
+                        <div class="event-detail">
+                            <div class="label">Tempat</div>
+                            <div class="value-address">
+                                Perumahan Griya Mataram Asri 2<br>
+                                Blok A.23<br>
+                                Jl. Padat Karya Lr. Melati 2<br>
+                                Rt.02/Rw.01<br>
+                                Sugiwaras, Kel. Talang Jambe<br>
+                                Kec. Sukarami, Palembang
+                            </div>
+                        </div>
+                        <a href="https://maps.app.goo.gl/dqQHUyHi8sKXpdak9" target="_blank" class="btn btn-map">
+                            <i class="bi bi-geo-alt-fill me-2"></i>Lihat Lokasi
+                        </a>
                     </div>
                 </div>
             </div>
@@ -301,12 +1086,30 @@
             <div class="section-title" data-aos="fade-up">
                 <div class="ornament-text">Menghitung Hari</div>
                 <h2>Countdown</h2>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
             </div>
+
             <div class="countdown-wrapper" data-aos="zoom-in">
-                <div class="countdown-box"><div class="number" id="days">00</div><div class="label">Hari</div></div>
-                <div class="countdown-box"><div class="number" id="hours">00</div><div class="label">Jam</div></div>
-                <div class="countdown-box"><div class="number" id="minutes">00</div><div class="label">Menit</div></div>
-                <div class="countdown-box"><div class="number" id="seconds">00</div><div class="label">Detik</div></div>
+                <div class="countdown-box">
+                    <div class="number" id="days">00</div>
+                    <div class="label">Hari</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="number" id="hours">00</div>
+                    <div class="label">Jam</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="number" id="minutes">00</div>
+                    <div class="label">Menit</div>
+                </div>
+                <div class="countdown-box">
+                    <div class="number" id="seconds">00</div>
+                    <div class="label">Detik</div>
+                </div>
             </div>
         </div>
     </section>
@@ -316,35 +1119,73 @@
             <div class="section-title" data-aos="fade-up">
                 <div class="ornament-text">Konfirmasi Kehadiran</div>
                 <h2>Buku Tamu & Ucapan</h2>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
             </div>
+
             <div class="row g-4">
                 <div class="col-lg-6" data-aos="fade-right">
                     <div class="rsvp-form">
-                        <h4 class="text-center mb-4 font-playfair">Kirim Ucapan</h4>
+                        <h4 class="text-center mb-4 font-playfair" style="font-size: clamp(1.3rem, 4vw, 1.6rem);">Kirim Ucapan</h4>
                         <form id="wishForm">
                             <div class="mb-3">
-                                <input type="text" class="form-control" id="wishName" placeholder="Nama Lengkap Anda" required>
+                                <label class="form-label">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="wishName" placeholder="Masukkan nama Anda" required>
                             </div>
                             <div class="mb-3">
+                                <label class="form-label">Konfirmasi Kehadiran</label>
                                 <select class="form-select" id="wishStatus" required>
-                                    <option value="">Pilih Kehadiran</option>
+                                    <option value="">Pilih status kehadiran</option>
                                     <option value="Hadir">Hadir</option>
                                     <option value="Tidak Hadir">Tidak Hadir</option>
                                     <option value="Masih Ragu">Masih Ragu</option>
                                 </select>
                             </div>
                             <div class="mb-4">
-                                <textarea class="form-control" id="wishMessage" rows="3" placeholder="Tulis ucapan dan doa..." required></textarea>
+                                <label class="form-label">Ucapan & Doa</label>
+                                <textarea class="form-control" id="wishMessage" rows="4" placeholder="Tulis ucapan dan doa untuk Muhammad Zeyn..." required></textarea>
                             </div>
-                            <button type="submit" class="btn-submit" id="btnSubmitForm">
+                            <button type="submit" class="btn-submit">
                                 <i class="bi bi-send-fill me-2"></i>Kirim Ucapan
                             </button>
                         </form>
                     </div>
                 </div>
+
                 <div class="col-lg-6" data-aos="fade-left">
+                    <h4 class="text-center mb-4 font-playfair" style="font-size: clamp(1.3rem, 4vw, 1.6rem);">Ucapan Tamu</h4>
                     <div class="wishes-wrapper" id="wishesContainer">
-                        <div class="text-center mt-4">Memuat ucapan...</div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hadiah">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <div class="ornament-text">Kado & Hadiah</div>
+                <h2>Kirim Hadiah</h2>
+                <div class="divider">
+                    <div class="line"></div>
+                    <div class="dot"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-5" data-aos="fade-up">
+                    <div class="event-card">
+                        <div class="event-icon"><i class="bi bi-bank"></i></div>
+                        <h5 class="font-playfair mb-3" style="font-size: clamp(1.1rem, 3vw, 1.3rem);">Bank Central Asia</h5>
+                        <p class="mb-1" style="font-size: clamp(0.85rem, 2.3vw, 0.9rem); color: #777;">a.n. Miftakhul Janah</p>
+                        <p class="mb-3" style="font-size: clamp(1.1rem, 3.5vw, 1.3rem); font-weight: 700; color: var(--navy-dark); letter-spacing: 2px;">617 504 0548</p>
+                        <button class="btn btn-map" onclick="copyToClipboard('6175040548')">
+                            <i class="bi bi-clipboard me-2"></i>Salin No. Rekening
+                        </button>
                     </div>
                 </div>
             </div>
@@ -352,9 +1193,21 @@
     </section>
 
     <footer>
-        <div class="container">
-            <div class="footer-names" style="font-family: 'Playfair Display', serif; color: var(--gold-light); font-size: 1.5rem;">Terima Kasih</div>
-            <p style="font-size: 0.8rem; margin-top: 1rem;">© 2026 Walimatul Khitan Muhammad Zeyn</p>
+        <div class="container" data-aos="fade-up">
+            <div class="footer-names">Muhammad Zeyn Kenzi Hamizan</div>
+            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila<br class="d-none d-md-inline">Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu<br class="d-none d-md-inline">kepada putra kami.</p>
+            <p style="margin-top: 1.5rem; font-family: 'Cormorant Garamond', serif; font-size: clamp(1rem, 3vw, 1.2rem); color: var(--gold-light);">
+                Wassalamu'alaikum Wr. Wb.
+            </p>
+            <div class="yang-mengundang">
+                <h5>Yang Mengundang</h5>
+                <p>1. Kel. Besar M. Khobir, S.Sos</p>
+                <p>2. Kel. Besar Sefran Jamil</p>
+            </div>
+            <p style="margin-top: 2rem; font-size: clamp(0.75rem, 2vw, 0.8rem);">
+                © 2026 Walimatul Khitan Muhammad Zeyn Kenzi Hamizan<br>
+                Made with <i class="bi bi-heart-fill" style="color: var(--gold-light);"></i> by InviGlory
+            </p>
         </div>
     </footer>
 
@@ -362,20 +1215,28 @@
         <i class="bi bi-music-note-beamed" id="musicIcon"></i>
     </button>
 
+    <button class="scroll-top" id="scrollTopBtn" onclick="scrollToTop()">
+        <i class="bi bi-chevron-up"></i>
+    </button>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        AOS.init({ duration: 1000, once: true, offset: 50 });
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
 
-        // URL API Backend (Bisa pakai URL Google Apps Script, CI, atau Laravel)
-        const API_URL = "URL_GOOGLE_APPS_SCRIPT_DISINI"; 
-
-        // Guest Name
+        // Get guest name from URL
         const urlParams = new URLSearchParams(window.location.search);
         const guest = urlParams.get('to');
-        if (guest) document.getElementById('guestName').textContent = decodeURIComponent(guest);
+        if (guest) {
+            document.getElementById('guestName').textContent = decodeURIComponent(guest);
+        }
 
-        // ================= SOUNDCLOUD PLAYER =================
+        // ==================== SOUNDCLOUD PLAYER ====================
         let scWidget = null;
         let isMusicPlaying = false;
 
@@ -383,10 +1244,19 @@
             const iframe = document.getElementById('sc-player');
             try {
                 scWidget = SC.Widget(iframe);
-                scWidget.bind(SC.Widget.Events.READY, () => console.log('SC ready'));
-            } catch (e) { console.log('SC fail'); }
+                scWidget.bind(SC.Widget.Events.READY, function() {
+                    console.log('SoundCloud player ready');
+                });
+                scWidget.bind(SC.Widget.Events.FINISH, function() {
+                    scWidget.seekTo(0);
+                    scWidget.play();
+                });
+            } catch (e) {
+                console.log('SC Widget not ready, will retry');
+            }
         }
 
+        // Load SoundCloud API
         const scScript = document.createElement('script');
         scScript.src = 'https://w.soundcloud.com/player/api.js';
         scScript.onload = initSoundCloud;
@@ -395,141 +1265,246 @@
         function toggleMusic() {
             const btn = document.getElementById('musicBtn');
             const icon = document.getElementById('musicIcon');
-            if (!scWidget) initSoundCloud();
+            
+            if (!scWidget) {
+                initSoundCloud();
+            }
 
             if (!isMusicPlaying) {
-                if(scWidget) scWidget.play();
+                if (scWidget) {
+                    scWidget.play();
+                }
                 btn.classList.add('playing');
                 icon.className = 'bi bi-pause-fill';
                 isMusicPlaying = true;
             } else {
-                if(scWidget) scWidget.pause();
+                if (scWidget) {
+                    scWidget.pause();
+                }
                 btn.classList.remove('playing');
                 icon.className = 'bi bi-music-note-beamed';
                 isMusicPlaying = false;
             }
         }
 
-        function openInvitation() {
-            document.getElementById('cover').classList.add('hidden');
-            document.body.classList.remove('no-scroll');
-            document.getElementById('musicBtn').style.display = 'flex';
-            setTimeout(() => { if (!isMusicPlaying) toggleMusic(); }, 500);
-        }
+        // ==================== LOCALSTORAGE WISHES ====================
+        const STORAGE_KEY = 'khitanan_wishes_2026';
 
-        // ================= BUKU TAMU (FETCH API) =================
-        async function fetchWishes() {
-            const container = document.getElementById('wishesContainer');
-            if(API_URL === "URL_GOOGLE_APPS_SCRIPT_DISINI") {
-                // Fallback jika belum diatur URL API-nya
-                renderLocalWishes();
-                return;
+        // Default wishes
+        const defaultWishes = [
+            {
+                name: 'Budi Santoso',
+                status: 'Hadir',
+                message: 'Semoga Muhammad Zeyn menjadi anak yang sholeh, cerdas, dan berbakti kepada orang tua. Aamiin. 🤲',
+                timestamp: new Date('2026-01-15T10:30:00').getTime()
+            },
+            {
+                name: 'Anisa Rahma',
+                status: 'Hadir',
+                message: 'Barakallah fiik untuk Muhammad Zeyn. Semoga selalu dalam lindungan Allah SWT. 💕',
+                timestamp: new Date('2026-01-16T14:20:00').getTime()
+            },
+            {
+                name: 'Rizky Firmansyah',
+                status: 'Masih Ragu',
+                message: 'Selamat ya untuk khitanan Muhammad Zeyn! Semoga menjadi anak yang sholeh dan sholehah. ',
+                timestamp: new Date('2026-01-17T09:15:00').getTime()
             }
+        ];
 
+        function getWishes() {
             try {
-                const response = await fetch(API_URL);
-                const data = await response.json();
-                renderWishesHTML(data);
-            } catch (error) {
-                console.error("Gagal mengambil data:", error);
-                renderLocalWishes(); // Fallback ke lokal
+                const stored = localStorage.getItem(STORAGE_KEY);
+                if (stored) {
+                    return JSON.parse(stored);
+                }
+            } catch (e) {
+                console.log('Error reading localStorage:', e);
+            }
+            // If no stored data, use defaults and save
+            saveWishes(defaultWishes);
+            return defaultWishes;
+        }
+
+        function saveWishes(wishes) {
+            try {
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(wishes));
+            } catch (e) {
+                console.log('Error saving to localStorage:', e);
             }
         }
 
-        function renderWishesHTML(wishes) {
+        function addWish(name, status, message) {
+            const wishes = getWishes();
+            const newWish = {
+                name: name,
+                status: status,
+                message: message,
+                timestamp: Date.now()
+            };
+            wishes.unshift(newWish); // Add to beginning
+            saveWishes(wishes);
+            return newWish;
+        }
+
+        function getStatusClass(status) {
+            if (status === 'Tidak Hadir') return 'status-tidak';
+            if (status === 'Masih Ragu') return 'status-ragu';
+            return 'status-hadir';
+        }
+
+        function formatDate(timestamp) {
+            const date = new Date(timestamp);
+            const options = { 
+                day: '2-digit', 
+                month: 'short', 
+                year: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            };
+            return date.toLocaleDateString('id-ID', options);
+        }
+
+        function renderWishes() {
             const container = document.getElementById('wishesContainer');
-            if (!wishes || wishes.length === 0) {
-                container.innerHTML = '<div class="text-center p-4 text-muted">Jadilah yang pertama memberi ucapan!</div>';
+            const wishes = getWishes();
+
+            if (wishes.length === 0) {
+                container.innerHTML = '<div class="empty-wishes">Belum ada ucapan. Jadilah yang pertama!</div>';
                 return;
             }
-            
-            container.innerHTML = wishes.reverse().map(w => {
-                let badgeClass = w.status === 'Tidak Hadir' ? 'status-tidak' : (w.status === 'Masih Ragu' ? 'status-ragu' : 'status-hadir');
-                return `
+
+            container.innerHTML = wishes.map(w => `
                 <div class="wish-card">
                     <div class="wish-header">
-                        <span class="wish-name">${w.name}</span>
-                        <span class="wish-status ${badgeClass}">${w.status}</span>
+                        <span class="wish-name">${escapeHtml(w.name)}</span>
+                        <span class="wish-status ${getStatusClass(w.status)}">${w.status}</span>
                     </div>
-                    <p class="wish-message mb-1">${w.message}</p>
-                    <small class="text-muted" style="font-size:0.7rem;">${w.timestamp || 'Baru saja'}</small>
-                </div>`;
-            }).join('');
+                    <p class="wish-message">${escapeHtml(w.message)}</p>
+                    <div class="wish-time"><i class="bi bi-clock me-1"></i>${formatDate(w.timestamp)}</div>
+                </div>
+            `).join('');
         }
 
-        document.getElementById('wishForm').addEventListener('submit', async function(e) {
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // ==================== FORM SUBMIT ====================
+        document.getElementById('wishForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const btn = document.getElementById('btnSubmitForm');
             
-            const payload = {
-                name: document.getElementById('wishName').value.trim(),
-                status: document.getElementById('wishStatus').value,
-                message: document.getElementById('wishMessage').value.trim(),
-                timestamp: new Date().toLocaleString('id-ID')
-            };
+            const name = document.getElementById('wishName').value.trim();
+            const status = document.getElementById('wishStatus').value;
+            const message = document.getElementById('wishMessage').value.trim();
 
-            btn.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Mengirim...';
-            btn.disabled = true;
+            if (!name || !status || !message) {
+                showToast('Mohon lengkapi semua field!', false);
+                return;
+            }
 
-            if(API_URL === "URL_GOOGLE_APPS_SCRIPT_DISINI") {
-                // Simpan di LocalStorage Jika API belum diset
-                let localWishes = JSON.parse(localStorage.getItem('khitan_wishes') || '[]');
-                localWishes.push(payload);
-                localStorage.setItem('khitan_wishes', JSON.stringify(localWishes));
-                
-                setTimeout(() => {
-                    renderLocalWishes();
-                    finishSubmit(btn);
-                }, 800);
+            addWish(name, status, message);
+            renderWishes();
+            document.getElementById('wishForm').reset();
+            showToast('Terima kasih! Ucapan Anda telah tersimpan.', true);
+
+            // Scroll to wishes
+            setTimeout(() => {
+                document.getElementById('wishesContainer').scrollTop = 0;
+            }, 300);
+        });
+
+        // ==================== TOAST ====================
+        function showToast(message, success) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = 'toast-custom ' + (success ? 'success' : '') + ' show';
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // ==================== OPEN INVITATION ====================
+        function openInvitation() {
+            const cover = document.getElementById('cover');
+            cover.classList.add('hidden');
+            document.body.classList.remove('no-scroll');
+            document.getElementById('musicBtn').style.display = 'flex';
+            
+            // Perbaikan: Mainkan musik langsung saat tombol diklik (menghindari diblokir browser)
+            if (!isMusicPlaying) {
+                toggleMusic();
+            }
+
+            setTimeout(() => {
+                cover.style.display = 'none';
+            }, 1000);
+        }
+
+        // ==================== COUNTDOWN ====================
+        const khitananDate = new Date('2026-06-21T09:00:00').getTime();
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = khitananDate - now;
+
+            if (distance < 0) {
+                document.getElementById('days').textContent = '00';
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('days').textContent = String(days).padStart(2, '0');
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // ==================== COPY TO CLIPBOARD ====================
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Nomor rekening berhasil disalin!', true);
+            }).catch(() => {
+                const textarea = document.createElement('textarea');
+                textarea.value = text;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('Nomor rekening berhasil disalin!', true);
+            });
+        }
+
+        // ==================== SCROLL TO TOP ====================
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 500) {
+                scrollBtn.style.display = 'flex';
             } else {
-                // Kirim ke Database/Google Sheets
-                try {
-                    await fetch(API_URL, {
-                        method: 'POST',
-                        body: JSON.stringify(payload)
-                    });
-                    await fetchWishes();
-                    finishSubmit(btn);
-                } catch (error) {
-                    showToast('Gagal mengirim, periksa koneksi', false);
-                    btn.innerHTML = '<i class="bi bi-send-fill me-2"></i>Kirim Ucapan';
-                    btn.disabled = false;
-                }
+                scrollBtn.style.display = 'none';
             }
         });
 
-        function finishSubmit(btn) {
-            document.getElementById('wishForm').reset();
-            btn.innerHTML = '<i class="bi bi-send-fill me-2"></i>Kirim Ucapan';
-            btn.disabled = false;
-            showToast('Ucapan berhasil dikirim!', true);
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        function renderLocalWishes() {
-            let wishes = JSON.parse(localStorage.getItem('khitan_wishes') || '[]');
-            renderWishesHTML(wishes);
-        }
-
-        function showToast(msg, isSuccess) {
-            const toast = document.getElementById('toast');
-            toast.textContent = msg;
-            toast.className = 'toast-custom ' + (isSuccess ? 'success' : '') + ' show';
-            setTimeout(() => toast.classList.remove('show'), 3000);
-        }
-
-        // Init
-        document.addEventListener('DOMContentLoaded', fetchWishes);
-
-        // Countdown Logic (Persis sama dengan script asli)
-        const khitananDate = new Date('2026-06-21T09:00:00').getTime();
-        setInterval(() => {
-            const distance = khitananDate - new Date().getTime();
-            if (distance < 0) return;
-            document.getElementById('days').textContent = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-            document.getElementById('hours').textContent = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            document.getElementById('minutes').textContent = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            document.getElementById('seconds').textContent = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-        }, 1000);
+        // ==================== INIT ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            renderWishes();
+        });
     </script>
 </body>
 </html>
