@@ -22,6 +22,17 @@
     </style>
 </head>
 <body>
+    <audio id="bg-music" src="lagumaherzeyn.mp3" autoplay loop></audio>
+
     <iframe src="https://rekap.tasikmalayakota.go.id/uas/undanganzeyn" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+
+    <script>
+        document.body.addEventListener('click', function() {
+            var audio = document.getElementById('bg-music');
+            if (audio.paused) {
+                audio.play();
+            }
+        });
+    </script>
 </body>
 </html>
